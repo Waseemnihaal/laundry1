@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   //List<bool> select = [false, false, false, false, false];
   bool col = false, col1 = false, col2 = false, col3 = false, col4 = false;
-  int a = 0;
+  int a = 0, b = 0;
   void increment() {
     setState(() {
       if (a == 20) {
