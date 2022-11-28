@@ -14,10 +14,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   //List<bool> select = [false, false, false, false, false];
   bool col = false, col1 = false, col2 = false, col3 = false, col4 = false;
-  int a = 0;
+  int a = 0, b = 0, c = 0, d = 0, e = 0;
   void increment() {
     setState(() {
-      if (a == 20) {
+      if (a == 500) {
       } else {
         a++;
         col = true;
@@ -106,45 +106,59 @@ class _MyAppState extends State<MyApp> {
                       ),
                       Container(
                         height: 30,
-                        width: 80,
+                        width: 85,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            ConstrainedBox(
-                              constraints: BoxConstraints.tightFor(
-                                  height: 25, width: 25),
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    primary:
-                                        Color.fromARGB(255, 239, 234, 234)),
-                                onPressed: decrement,
+                            Stack(children: [
+                              Container(
+                                height: 25,
+                                width: 25,
+                                color: Color.fromARGB(255, 239, 234, 234),
                                 child: Icon(
                                   Icons.remove,
-                                  size: 15,
+                                  size: 16,
                                   color: Colors.black,
                                 ),
                               ),
-                            ),
+                              ConstrainedBox(
+                                constraints: BoxConstraints.tightFor(
+                                    height: 25, width: 25),
+                                child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        primary: Colors.transparent,
+                                        elevation: 0),
+                                    onPressed: decrement,
+                                    child: Text('')),
+                              ),
+                            ]),
                             Text(
                               '$a',
                               style:
                                   TextStyle(color: Colors.black, fontSize: 18),
                             ),
-                            ConstrainedBox(
-                              constraints: BoxConstraints.tightFor(
-                                  height: 25, width: 25),
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    primary:
-                                        Color.fromARGB(255, 239, 234, 234)),
-                                onPressed: increment,
+                            Stack(children: [
+                              Container(
+                                height: 25,
+                                width: 25,
+                                color: Color.fromARGB(255, 239, 234, 234),
                                 child: Icon(
                                   Icons.add,
-                                  size: 15,
+                                  size: 16,
                                   color: Colors.black,
                                 ),
                               ),
-                            ),
+                              ConstrainedBox(
+                                constraints: BoxConstraints.tightFor(
+                                    height: 25, width: 25),
+                                child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        primary: Colors.transparent,
+                                        elevation: 0),
+                                    onPressed: increment,
+                                    child: Text('')),
+                              ),
+                            ]),
                           ],
                         ),
                         decoration: BoxDecoration(
@@ -184,19 +198,94 @@ class _MyAppState extends State<MyApp> {
                       primary: col1 ? Colors.white : Colors.transparent,
                       elevation: 0,
                     ),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Regular Wash + Ironing',
-                        style: TextStyle(
-                            color: col1 ? Colors.black : Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Regular Wash + Ironing',
+                            style: TextStyle(
+                                color: col1 ? Colors.black : Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 85,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Stack(children: [
+                                Container(
+                                  height: 25,
+                                  width: 25,
+                                  color: Color.fromARGB(255, 239, 234, 234),
+                                  child: Icon(
+                                    Icons.remove,
+                                    size: 16,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                ConstrainedBox(
+                                  constraints: BoxConstraints.tightFor(
+                                      height: 25, width: 25),
+                                  child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          primary: Colors.transparent,
+                                          elevation: 0),
+                                      onPressed: decrement,
+                                      child: Text('')),
+                                ),
+                              ]),
+                              Text(
+                                '$b',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 18),
+                              ),
+                              Stack(children: [
+                                Container(
+                                  height: 25,
+                                  width: 25,
+                                  color: Color.fromARGB(255, 239, 234, 234),
+                                  child: Icon(
+                                    Icons.add,
+                                    size: 16,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                ConstrainedBox(
+                                  constraints: BoxConstraints.tightFor(
+                                      height: 25, width: 25),
+                                  child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          primary: Colors.transparent,
+                                          elevation: 0),
+                                      onPressed: increment,
+                                      child: Text('')),
+                                ),
+                              ]),
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: col1
+                                ? Color.fromARGB(255, 152, 228, 94)
+                                : Colors.white70,
+                          ),
+                        ),
+                      ],
                     ),
                     onPressed: () {
                       setState(() {
                         col1 = !col1;
+
+                        if (col1) {
+                          a = 1;
+                        } else {
+                          a = 0;
+                        }
                       });
                     },
                   ),
@@ -217,19 +306,94 @@ class _MyAppState extends State<MyApp> {
                       primary: col2 ? Colors.white : Colors.transparent,
                       elevation: 0,
                     ),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Wash and Press',
-                        style: TextStyle(
-                            color: col2 ? Colors.black : Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Wash and Press',
+                            style: TextStyle(
+                                color: col2 ? Colors.black : Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        Container(
+                          height: 30,
+                          width: 85,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Stack(children: [
+                                Container(
+                                  height: 25,
+                                  width: 25,
+                                  color: Color.fromARGB(255, 239, 234, 234),
+                                  child: Icon(
+                                    Icons.remove,
+                                    size: 16,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                ConstrainedBox(
+                                  constraints: BoxConstraints.tightFor(
+                                      height: 25, width: 25),
+                                  child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          primary: Colors.transparent,
+                                          elevation: 0),
+                                      onPressed: decrement,
+                                      child: Text('')),
+                                ),
+                              ]),
+                              Text(
+                                '$c',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 18),
+                              ),
+                              Stack(children: [
+                                Container(
+                                  height: 25,
+                                  width: 25,
+                                  color: Color.fromARGB(255, 239, 234, 234),
+                                  child: Icon(
+                                    Icons.add,
+                                    size: 16,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                ConstrainedBox(
+                                  constraints: BoxConstraints.tightFor(
+                                      height: 25, width: 25),
+                                  child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          primary: Colors.transparent,
+                                          elevation: 0),
+                                      onPressed: increment,
+                                      child: Text('')),
+                                ),
+                              ]),
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: col2
+                                ? Color.fromARGB(255, 152, 228, 94)
+                                : Colors.white70,
+                          ),
+                        ),
+                      ],
                     ),
                     onPressed: () {
                       setState(() {
                         col2 = !col2;
+
+                        if (col2) {
+                          a = 1;
+                        } else {
+                          a = 0;
+                        }
                       });
                     },
                   ),
